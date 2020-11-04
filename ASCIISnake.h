@@ -1,4 +1,5 @@
-#pragma once
+#ifndef ASCIISNAKE_H_
+#define ASCIISNAKE_H_
 
 #ifdef _WIN32
 #include <conio.h>
@@ -11,6 +12,7 @@
 #define height  25
 #define width  50
 
+// different orientation possible
 typedef enum
 {
 	UP,
@@ -19,12 +21,15 @@ typedef enum
 	RIGHT
 }Orientation;
 
-typedef struct
+// simple vector struct
+struct Vector2i
 {
 	int x;
 	int y;
-}Vector2i;
+};
+typedef struct Vector2i Vector2i;
 
+// tail struct for the player
 struct Tail
 {
 	struct Tail* tail;
@@ -33,11 +38,16 @@ struct Tail
 };
 typedef struct Tail Tail;
 
-typedef struct
+// player struct
+struct Player
 {
 	Vector2i position;
 	Tail* tail;
 	Orientation facing;
-}Player;
+};
+typedef struct Player Player;
 
+/// @brief Game main function
 void ASCIISnake();
+
+#endif
